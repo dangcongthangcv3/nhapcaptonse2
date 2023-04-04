@@ -10,23 +10,23 @@ document.getElementById('login').onclick = function(){
   
     let loginVal = new LoginVal()
     
-    let em = document.getElementById('txt__email').value
     loginVal.email = document.getElementById('txt__email').value
     loginVal.password = document.getElementById('txt__password').value
 
-    if(em!=''){
+    if(localStorage.getItem('mang')){
       let usera = localStorage.getItem('mang');
       let data = JSON.parse(usera)
       console.log(data)
-      if(loginVal.email== data.email && loginVal.password==data.password){
-        
-        window.location.href = './index.html'
-        // loginAxios(login)
+      for(let i= 0; i<data.length;i++){
+        if(loginVal.email== data[i].email && loginVal.password==data[i].password){
+          
+          window.location.href = './index.html'
+          // loginAxios(login)
+        }
       }
-  }
+  } 
 }
 
-//  export const emaa = 31 
 function loginAxios(user){
     let promise = axios({
         url: 'https://shop.cyberlearn.vn/api/Users/signin',

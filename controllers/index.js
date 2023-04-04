@@ -1,4 +1,3 @@
-// import { emaa } from "./login.js";
 
 
 function renderProductFeature(arrProd) {
