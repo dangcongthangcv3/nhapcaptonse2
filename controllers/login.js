@@ -7,21 +7,24 @@ import {LoginVal} from "../models/Login.js";
 //                     aA1!aa
 
 document.getElementById('login').onclick = function(){
-  
+  debugger
     let loginVal = new LoginVal()
     
     loginVal.email = document.getElementById('txt__email').value
     loginVal.password = document.getElementById('txt__password').value
 
     if(localStorage.getItem('mang')){
-      let usera = localStorage.getItem('mang');
-      let data = JSON.parse(usera)
+      let stringArr= localStorage.getItem('mang');
+      let data = JSON.parse(stringArr)
       console.log(data)
       for(let i= 0; i<data.length;i++){
         if(loginVal.email== data[i].email && loginVal.password==data[i].password){
           
           window.location.href = './index.html'
-          // loginAxios(login)
+          loginAxios(login)
+        }
+        else{
+          alert('Đăng nhập thất bại')
         }
       }
   } 
