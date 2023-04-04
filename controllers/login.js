@@ -7,7 +7,7 @@ import {LoginVal} from "../models/Login.js";
 //                     aA1!aa
 
 document.getElementById('login').onclick = function(){
-  // debugger
+  debugger
     let loginVal = new LoginVal()
     
     loginVal.email = document.getElementById('txt__email').value
