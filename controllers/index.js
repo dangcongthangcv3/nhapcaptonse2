@@ -1,15 +1,19 @@
+
 var html = ''
 if(localStorage.getItem('Login')){
-  debugger
+  // de
   let stringArr= localStorage.getItem('Login');
+  // debugger
   let data = JSON.parse(stringArr)
   for(let i= 0; i<data.length;i++){
     if(data[1]==true){
-      html = `<div class="header_user">
-        <a href="./login.html">Login</a>
-        <a href="./register.html">Register</a>
-      </div>`
-      document.getElementById('loginIndex').innerHTML = 'Hello chào! '+data[0];
+      html = `<div class='header_user'><a>${data[0]} </a></div>
+      <div class='header_user'><a id='logout'>LogOut </a></div>`
+      document.getElementById('loginIndex').innerHTML = html;
+      // <div class="header_user">
+      //   <a href="./login.html">Login</a>
+      //   <a href="./register.html">Register</a>
+      // </div>
       // debugger
       // var arrLogin = [data[i].name, true]
       // var jsonLogin = JSON.stringify(arrLogin);
@@ -19,14 +23,28 @@ if(localStorage.getItem('Login')){
     }
     else{
       html = `<div class="header_user">
+      <a href="./login.html">Login</a>
+      <a href="./register.html">Register</a>
+    </div>`
+    document.getElementById('loginIndex').innerHTML = html;
+    }
+  }
+} 
+document.getElementById('logout').onclick = function(){
+  debugger
+  let stringArr= localStorage.getItem('Login');
+  let data = JSON.parse(stringArr)
+  // for(let i= 0; i<data.length;i++){
+    var arrLogin = [data[0], false]
+    var jsonLogin = JSON.stringify(arrLogin);
+    localStorage.setItem('Login',jsonLogin)
+    html = `<div class="header_user">
         <a href="./login.html">Login</a>
         <a href="./register.html">Register</a>
       </div>`
       document.getElementById('loginIndex').innerHTML = html;
-    }
-  }
-} 
-
+  // }
+}
 function renderProductFeature(arrProd) {
   var htmlContent = "";
   for (var index = 0; index < arrProd.length; index++) {
