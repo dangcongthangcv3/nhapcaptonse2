@@ -5,9 +5,9 @@ import {LoginVal} from "../models/Login.js";
 //                     asc@gmail.com
 // pass: aA1!aa
 //                     aA1!aa
-
-document.getElementById('login').onclick = function(){
-  debugger
+var arrLogin = []
+document.getElementById('loginbutton').onclick = function(){
+  // debugger
     let loginVal = new LoginVal()
     
     loginVal.email = document.getElementById('txt__email').value
@@ -19,9 +19,12 @@ document.getElementById('login').onclick = function(){
       console.log(data)
       for(let i= 0; i<data.length;i++){
         if(loginVal.email== data[i].email && loginVal.password==data[i].password){
-          
-          window.location.href = './index.html'
+          debugger
+          var arrLogin = [data[i].name, true]
+          var jsonLogin = JSON.stringify(arrLogin);
+          localStorage.setItem('Login',jsonLogin)
           loginAxios(login)
+          window.location.href = './index.html'
         }
         else{
           document.getElementById('loss').innerHTML = 'Đăng nhập thất bại'
